@@ -1,0 +1,320 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Styles ─────────────────────────────────────────────────────────── */
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-text font-sans antialiased;
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary rounded-sm;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-text-light;
+  }
+}
+
+/* ─── Component Styles ────────────────────────────────────────────────────── */
+@layer components {
+
+  /* Glass card */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-border/60 rounded-2xl shadow-glass;
+  }
+
+  .glass-card-dark {
+    @apply bg-white/60 backdrop-blur-md border border-white/40 rounded-2xl shadow-glass;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .gradient-text-accent {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24;
+  }
+
+  /* Card base */
+  .card {
+    @apply bg-card rounded-2xl border border-border shadow-soft transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-soft-lg hover:-translate-y-1;
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn px-6 py-3 bg-primary text-white hover:bg-primary-700 shadow-primary/20 shadow-md hover:shadow-primary focus-visible:ring-primary;
+  }
+
+  .btn-secondary {
+    @apply btn px-6 py-3 bg-white text-primary border border-primary/30 hover:border-primary hover:bg-primary/5 shadow-sm focus-visible:ring-primary;
+  }
+
+  .btn-accent {
+    @apply btn px-6 py-3 bg-accent text-white hover:bg-accent-600 shadow-accent/20 shadow-md hover:shadow-accent focus-visible:ring-accent;
+  }
+
+  .btn-outline {
+    @apply btn px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white focus-visible:ring-primary;
+  }
+
+  .btn-ghost {
+    @apply btn px-4 py-2 text-text-muted hover:text-primary hover:bg-primary/5 focus-visible:ring-primary;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary/10 text-primary border-primary/20;
+  }
+
+  .badge-secondary {
+    @apply badge bg-secondary/10 text-secondary-700 border-secondary/20;
+  }
+
+  .badge-accent {
+    @apply badge bg-accent/10 text-accent-700 border-accent/20;
+  }
+
+  /* Section title */
+  .section-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-text;
+  }
+
+  .section-subtitle {
+    @apply text-text-muted text-lg max-w-2xl;
+  }
+
+  /* Nav link */
+  .nav-link {
+    @apply relative text-sm font-medium text-text-muted hover:text-primary transition-colors duration-200;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 w-0 h-0.5 bg-primary rounded-full transition-all duration-200;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  .nav-link.active {
+    @apply text-primary;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    @apply h-2 rounded-full bg-border overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-1000 ease-out;
+  }
+
+  /* Tag */
+  .tech-tag {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 bg-primary/8 text-primary text-xs font-medium rounded-lg border border-primary/15 hover:bg-primary/15 transition-colors;
+  }
+
+  /* Input */
+  .form-input {
+    @apply w-full px-4 py-3 bg-card border border-border rounded-xl text-text placeholder:text-text-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-text mb-1.5;
+  }
+
+  /* Divider with text */
+  .divider-text {
+    @apply flex items-center gap-4 text-text-light text-sm;
+  }
+
+  .divider-text::before,
+  .divider-text::after {
+    content: '';
+    @apply flex-1 h-px bg-border;
+  }
+}
+
+/* ─── Utility Styles ──────────────────────────────────────────────────────── */
+@layer utilities {
+
+  /* Blob animation delays */
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  .animation-delay-6000 {
+    animation-delay: 6s;
+  }
+
+  /* Text truncation */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Gradient backgrounds */
+  .bg-hero-gradient {
+    background: radial-gradient(ellipse at top right, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at bottom left, rgba(6, 182, 212, 0.05) 0%, transparent 60%),
+      #F8FAFC;
+  }
+
+  .bg-section-alt {
+    background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  }
+
+  /* Hide scrollbar but allow scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Perspective for 3D effects */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  /* Primary/8 color */
+  .bg-primary\/8 {
+    background-color: rgba(37, 99, 235, 0.08);
+  }
+
+  .border-primary\/15 {
+    border-color: rgba(37, 99, 235, 0.15);
+  }
+}
+
+/* ─── Page Transition ─────────────────────────────────────────────────────── */
+.page-enter {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+/* ─── Custom Animations ───────────────────────────────────────────────────── */
+@keyframes typing {
+  from {
+    width: 0
+  }
+
+  to {
+    width: 100%
+  }
+}
+
+@keyframes blink-caret {
+
+  from,
+  to {
+    border-color: transparent
+  }
+
+  50% {
+    border-color: #2563EB
+  }
+}
+
+/* react-pdf canvas */
+.react-pdf__Page__canvas {
+  @apply rounded-xl shadow-soft;
+}
+
+.react-pdf__Document {
+  @apply flex flex-col items-center;
+}
