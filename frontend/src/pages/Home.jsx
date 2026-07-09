@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Download, ArrowRight, Github, Linkedin, Twitter, Instagram, Mail, MapPin, Briefcase, Zap } from 'lucide-react';
+import { Download, ArrowRight, Github, Linkedin, Twitter, Instagram, Mail, MapPin, Briefcase, Zap, Sparkles } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 import PageTransition from '../components/PageTransition';
 import { personalInfo, stats } from '../data/personalData';
@@ -36,8 +36,8 @@ const BackgroundBlobs = () => (
 
 // ─── Social Links ─────────────────────────────────────────────────────────────
 const socialData = [
-  { icon: Github, href: 'https://github.com/varunprasad-dev', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/varunprasad', label: 'LinkedIn' },
+  { icon: Github, href: 'https://github.com/VarunVP007', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://linkedin.com/in/varunprasad-v/', label: 'LinkedIn' },
   { icon: Mail, href: 'mailto:varunprasadofficial23@example.com', label: 'Email' },
 ];
 
@@ -171,7 +171,7 @@ const Home = () => {
                 >
                   <img
                     src="/assets/hero.jpg"
-                    alt="Varun Prasad - Full Stack Developer"
+                    alt="Varunprasad V - Full Stack Developer"
                     className="w-full h-full object-cover scale-125 origin-center transition-transform duration-300"
                     loading="eager"
                     onError={(e) => {
@@ -292,46 +292,132 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── CTA Section ── */}
-      <section className="py-20 bg-white">
+      {/* ── Collaboration Idea Generator Section ── */}
+      <section className="py-20 bg-white overflow-hidden">
         <div className="section-container py-0">
-          <motion.div
-            {...scrollReveal(0)}
-            className="relative overflow-hidden rounded-4xl bg-gradient-to-br from-primary via-primary-700 to-secondary p-10 lg:p-16 text-center"
-          >
-            {/* BG pattern */}
-            <div className="absolute inset-0 opacity-10" aria-hidden="true">
-              <div className="absolute top-0 left-0 w-40 h-40 bg-white rounded-full -translate-x-1/2 -translate-y-1/2" />
-              <div className="absolute bottom-0 right-0 w-60 h-60 bg-white rounded-full translate-x-1/2 translate-y-1/2" />
-            </div>
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="badge-primary mb-4 inline-flex">Collaboration</span>
+            <h2 className="section-title mb-4">
+              Let's Build Something <span className="gradient-text">Amazing</span>
+            </h2>
+            <p className="text-text-muted text-base max-w-xl mx-auto">
+              Want to start a new project together but not sure where to begin? Give the idea generator below a spin to spark inspiration!
+            </p>
+          </div>
 
-            <div className="relative z-10">
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">
-                Let's Build Something Amazing Together
-              </h2>
-              <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-                Open to internships, collaborations, and full-time opportunities. Let's connect!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-white/90 transition-all shadow-lg hover:shadow-xl"
-                >
-                  Get In Touch
-                  <ArrowRight size={18} />
-                </Link>
-                <Link
-                  to="/projects"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 transition-all"
-                >
-                  View My Work
-                </Link>
-              </div>
-            </div>
+          <motion.div
+            {...scrollReveal(0.1)}
+            className="relative"
+          >
+            <CollabIdeaGenerator />
           </motion.div>
         </div>
       </section>
     </PageTransition>
+  );
+};
+
+// ─── Collaborative Project Idea Generator Component ──────────────────────────
+const CollabIdeaGenerator = () => {
+  const ideas = [
+    { tech: 'React & Node.js', text: 'Build a secure, real-time SaaS platform with multi-tenant interactive dashboards.' },
+    { tech: 'AI & Next.js', text: 'Deploy an intelligent chat agent using Google Gemini API and serverless database integration.' },
+    { tech: 'Tailwind & Framer Motion', text: 'Design a ultra-responsive premium landing page with smooth physics-based layout transitions.' },
+    { tech: 'MongoDB & Node.js', text: 'Develop a high-throughput REST API with advanced query caching and automatic rate-limiting.' },
+    { tech: 'Java & React', text: 'Create an automated ATS parser and optimizer for developer profiles.' }
+  ];
+
+  const [index, setIndex] = useState(-1);
+  const [rolling, setRolling] = useState(false);
+
+  const rollIdea = () => {
+    if (rolling) return;
+    setRolling(true);
+    let count = 0;
+    const interval = setInterval(() => {
+      setIndex(Math.floor(Math.random() * ideas.length));
+      count++;
+      if (count > 10) {
+        clearInterval(interval);
+        setRolling(false);
+      }
+    }, 90);
+  };
+
+  return (
+    <div className="max-w-3xl mx-auto">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] border border-slate-800 p-8 lg:p-12 text-center shadow-2xl">
+        {/* Background visual gradient glows */}
+        <div className="absolute -top-24 -left-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -right-24 w-60 h-60 bg-secondary/15 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 space-y-6">
+          <div className="inline-flex p-3 rounded-full bg-slate-900 border border-slate-800 text-amber-400 mb-2">
+            <Sparkles size={20} className={rolling ? "animate-spin" : "animate-pulse"} />
+          </div>
+
+          <h3 className="text-2xl sm:text-3xl font-display font-bold text-white">
+            Ready to Build Something Epic?
+          </h3>
+          <p className="text-slate-400 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+            Have a project concept or need inspiration? Roll the generator to spark a new collaboration idea we can tackle together.
+          </p>
+
+          {/* Generator Screen */}
+          <div className="min-h-[140px] flex flex-col justify-center items-center p-6 rounded-2xl bg-slate-900/60 backdrop-blur-sm border border-slate-800/80 shadow-inner my-8 transition-all duration-300">
+            {index === -1 ? (
+              <span className="text-slate-500 italic text-sm">
+                Click the spin button below to generate a collaboration concept...
+              </span>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                key={index}
+                className="space-y-3"
+              >
+                <span className="inline-block px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-xs font-bold rounded-full uppercase tracking-wider">
+                  {ideas[index].tech}
+                </span>
+                <p className="text-white font-medium text-base sm:text-xl px-2 leading-relaxed max-w-xl mx-auto">
+                  "{ideas[index].text}"
+                </p>
+              </motion.div>
+            )}
+          </div>
+
+          {/* Action buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <motion.button
+              onClick={rollIdea}
+              disabled={rolling}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-secondary hover:from-primary-700 hover:to-secondary text-white font-semibold rounded-xl shadow-lg hover:shadow-primary/20 transition-all disabled:opacity-50"
+            >
+              <Sparkles size={16} />
+              {rolling ? 'Rolling ideas...' : 'Spin Collab Idea'}
+            </motion.button>
+
+            {index !== -1 && !rolling && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="w-full sm:w-auto"
+              >
+                <Link
+                  to="/contact"
+                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 font-semibold rounded-xl shadow-sm hover:shadow-md transition-all"
+                >
+                  Let's Build It
+                  <ArrowRight size={16} />
+                </Link>
+              </motion.div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

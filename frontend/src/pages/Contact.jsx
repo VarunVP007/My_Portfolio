@@ -15,8 +15,8 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/varunprasad-dev', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/varunprasad', label: 'LinkedIn' },
+  { icon: Github, href: 'https://github.com/VarunVP007', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://linkedin.com/in/varunprasad-v/', label: 'LinkedIn' },
 ];
 
 const INITIAL_FORM = { name: '', email: '', subject: '', message: '' };

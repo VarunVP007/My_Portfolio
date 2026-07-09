@@ -3,40 +3,40 @@ import { useLocation } from 'react-router-dom';
 
 const pageMeta = {
   '/': {
-    title: 'Varun Prasad | Full Stack Developer',
+    title: 'Varunprasad V | Full Stack Developer',
     description: 'Full Stack Developer, Problem Solver & Tech Enthusiast. Building scalable, user-friendly web applications.',
   },
   '/about': {
-    title: 'About | Varun Prasad',
-    description: 'Learn about Varun Prasad — his career objective, highlights, and personal journey as a Full Stack Developer.',
+    title: 'About | Varunprasad V',
+    description: 'Learn about Varunprasad V — his career objective, highlights, and personal journey as a Full Stack Developer.',
   },
   '/education': {
-    title: 'Education | Varun Prasad',
-    description: 'Varun Prasad\'s education journey — B.Tech Computer Science Engineering at Kalaignar College with 8.75 CGPA.',
+    title: 'Education | Varunprasad V',
+    description: 'Varunprasad V\'s education journey — B.Tech Computer Science Engineering at Kalaignar College with 8.75 CGPA.',
   },
   '/skills': {
-    title: 'Skills | Varun Prasad',
-    description: 'Technical skills of Varun Prasad — React, Node.js, Python, MongoDB, AWS, and more.',
+    title: 'Skills | Varunprasad V',
+    description: 'Technical skills of Varunprasad V — React, Node.js, Python, MongoDB, AWS, and more.',
   },
   '/projects': {
-    title: 'Projects | Varun Prasad',
-    description: 'Explore Varun Prasad\'s portfolio projects including CraftShield, StudySphere, and more.',
+    title: 'Projects | Varunprasad V',
+    description: 'Explore Varunprasad V\'s portfolio projects including CraftShield, StudySphere, and more.',
   },
   '/experience': {
-    title: 'Experience & Certifications | Varun Prasad',
-    description: 'Professional experience and certifications of Varun Prasad.',
+    title: 'Experience & Certifications | Varunprasad V',
+    description: 'Professional experience and certifications of Varunprasad V.',
   },
   '/leetcode': {
-    title: 'LeetCode & GitHub | Varun Prasad',
-    description: 'Varun Prasad\'s coding activity on LeetCode and GitHub.',
+    title: 'LeetCode & GitHub | Varunprasad V',
+    description: 'Varunprasad V\'s coding activity on LeetCode and GitHub.',
   },
   '/resume': {
-    title: 'Resume | Varun Prasad',
-    description: 'View and download Varun Prasad\'s professional resume.',
+    title: 'Resume | Varunprasad V',
+    description: 'View and download Varunprasad V\'s professional resume.',
   },
   '/contact': {
-    title: 'Contact | Varun Prasad',
-    description: 'Get in touch with Varun Prasad for collaboration, job opportunities, or just to say hello.',
+    title: 'Contact | Varunprasad V',
+    description: 'Get in touch with Varunprasad V for collaboration, job opportunities, or just to say hello.',
   },
 };
 

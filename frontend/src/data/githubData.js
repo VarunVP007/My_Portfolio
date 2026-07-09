@@ -1,7 +1,7 @@
 // ─── GitHub Placeholder Data ─────────────────────────────────────────────────
 export const githubData = {
-  username: 'varunprasad-dev',
-  name: 'Varun Prasad',
+  username: 'VarunVP007',
+  name: 'Varunprasad V',
   bio: 'Full Stack Developer | Problem Solver | Open Source Enthusiast',
   avatar: 'https://avatars.githubusercontent.com/u/example',
   location: 'Salem, TamilNadu',
@@ -21,7 +21,7 @@ export const githubData = {
       forks: 12,
       language: 'JavaScript',
       languageColor: '#F7DF1E',
-      url: 'https://github.com/varunprasad-dev/craftshield',
+      url: 'https://github.com/VarunVP007/craftshield',
       topics: ['react', 'nodejs', 'mongodb', 'tensorflow'],
     },
     {
@@ -32,7 +32,7 @@ export const githubData = {
       forks: 8,
       language: 'JavaScript',
       languageColor: '#F7DF1E',
-      url: 'https://github.com/varunprasad-dev/studysphere',
+      url: 'https://github.com/VarunVP007/studysphere',
       topics: ['react', 'socketio', 'mongodb'],
     },
     {
@@ -43,7 +43,7 @@ export const githubData = {
       forks: 6,
       language: 'JavaScript',
       languageColor: '#F7DF1E',
-      url: 'https://github.com/varunprasad-dev/expense-tracker',
+      url: 'https://github.com/VarunVP007/expense-tracker',
       topics: ['react', 'expressjs', 'recharts'],
     },
     {
@@ -54,7 +54,7 @@ export const githubData = {
       forks: 5,
       language: 'Python',
       languageColor: '#3776AB',
-      url: 'https://github.com/varunprasad-dev/ai-chat',
+      url: 'https://github.com/VarunVP007/ai-chat',
       topics: ['python', 'fastapi', 'gemini'],
     },
   ],

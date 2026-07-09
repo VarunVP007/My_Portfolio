@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import Logo from './Logo';
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/varunprasad-dev', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/varunprasad', label: 'LinkedIn' },
+  { icon: Github, href: 'https://github.com/VarunVP007', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://linkedin.com/in/varunprasad-v/', label: 'LinkedIn' },
   { icon: Mail, href: 'mailto:varunprasadofficial23@example.com', label: 'Email' },
 ];
 
@@ -87,7 +87,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-text-muted flex items-center gap-1.5">
-            © {new Date().getFullYear()} Varun Prasad. Made with{' '}
+            © {new Date().getFullYear()} Varunprasad V. Made with{' '}
             <Heart size={14} className="text-red-500 fill-red-500" /> and
             <span className="text-primary font-medium">React</span>
           </p>

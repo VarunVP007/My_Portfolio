@@ -16,7 +16,7 @@ const Logo = ({ size = 36, className = '' }) => {
       {!imgError ? (
         <img
           src="/assets/logo.png"
-          alt="Varun Prasad Logo"
+          alt="Varunprasad V Logo"
           className="w-full h-full object-cover rounded-xl"
           onError={() => setImgError(true)}
         />

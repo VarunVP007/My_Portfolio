@@ -1,8 +1,8 @@
 // ─── Personal Info ────────────────────────────────────────────────────────────
 export const personalInfo = {
-  name: 'VarunPrasad V',
-  firstName: 'Varun',
-  lastName: 'Prasad V',
+  name: 'Varunprasad V',
+  firstName: 'Varunprasad',
+  lastName: 'V',
   title: 'Full Stack Developer',
   tagline: 'Problem Solver | Tech Enthusiast',
   bio: "I'm a Computer Science and Business Systems student who loves turning ideas into real-world products. I enjoy working with modern technologies and continuously exploring new things in the tech world.",
@@ -13,10 +13,10 @@ export const personalInfo = {
   degree: 'B.Tech Computer Science and Business Systems',
   age: 20,
   cgpa: '8.75',
-  githubUsername: 'varunprasad-dev',
+  githubUsername: 'VarunVP007',
   leetcodeUsername: 'varunprasad',
-  linkedinUrl: 'https://linkedin.com/in/varunprasad',
-  resumeUrl: '/resume/Varun_Prasad_Resume.pdf',
+  linkedinUrl: 'https://linkedin.com/in/varunprasad-v/',
+  resumeUrl: '/resume/VarunPrasad_Resume.pdf',
 };
 
 // ─── Stats ────────────────────────────────────────────────────────────────────
@@ -51,7 +51,7 @@ export const highlights = [
 
 // ─── Social Links ─────────────────────────────────────────────────────────────
 export const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com/varunprasad-dev', icon: 'Github' },
-  { name: 'LinkedIn', href: 'https://linkedin.com/in/varunprasad', icon: 'Linkedin' },
+  { name: 'GitHub', href: 'https://github.com/VarunVP007', icon: 'Github' },
+  { name: 'LinkedIn', href: 'https://linkedin.com/in/varunprasad-v/', icon: 'Linkedin' },
   { name: 'Email', href: 'mailto:varunprasadofficial23@example.com', icon: 'Mail' },
 ];

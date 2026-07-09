@@ -49,11 +49,11 @@ const Navbar = () => {
             <NavLink
               to="/"
               className="flex items-center gap-3 group"
-              aria-label="Varun Prasad - Home"
+              aria-label="Varunprasad V - Home"
             >
               <Logo size={44} />
               <span className="font-display font-bold text-xl text-text group-hover:text-primary transition-colors">
-                Varun<span className="text-primary">Prasad V</span>
+                Varun<span className="text-primary">prasad V</span>
               </span>
             </NavLink>
 

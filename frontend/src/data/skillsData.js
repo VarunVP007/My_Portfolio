@@ -8,7 +8,7 @@ export const skillCategories = [
       boxBg: 'bg-blue-50 text-primary border-blue-200/60',
       dotBg: 'bg-primary',
     },
-    skills: ['C', 'Java', 'Python', 'JavaScript', 'SQL'],
+    skills: ['Java', 'JavaScript', 'SQL'],
   },
   {
     id: 'frontend',
@@ -28,7 +28,7 @@ export const skillCategories = [
       boxBg: 'bg-emerald-50 text-emerald-600 border-emerald-200/60',
       dotBg: 'bg-emerald-500',
     },
-    skills: ['Node.js', 'Express.js', 'Python (Django)', 'REST API'],
+    skills: ['Node.js', 'REST API'],
   },
   {
     id: 'database',
@@ -38,7 +38,7 @@ export const skillCategories = [
       boxBg: 'bg-purple-50 text-purple-600 border-purple-200/60',
       dotBg: 'bg-purple-500',
     },
-    skills: ['MongoDB', 'MySQL', 'PostgreSQL', 'Firebase'],
+    skills: ['MongoDB', 'MySQL', 'Firebase'],
   },
   {
     id: 'tools',
@@ -48,7 +48,7 @@ export const skillCategories = [
       boxBg: 'bg-amber-50 text-amber-600 border-amber-200/60',
       dotBg: 'bg-amber-500',
     },
-    skills: ['Git & GitHub', 'VS Code', 'Postman', 'Docker', 'Figma'],
+    skills: ['Git & GitHub', 'VS Code', 'Postman', 'Figma'],
   },
   {
     id: 'cloud',
@@ -58,7 +58,7 @@ export const skillCategories = [
       boxBg: 'bg-blue-50 text-blue-600 border-blue-200/60',
       dotBg: 'bg-blue-500',
     },
-    skills: ['AWS', 'Firebase', 'Vercel', 'Netlify'],
+    skills: ['Firebase', 'Vercel', 'Netlify'],
   },
   {
     id: 'concepts',
