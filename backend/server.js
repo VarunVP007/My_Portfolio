@@ -64,7 +64,23 @@ if (process.env.NODE_ENV === 'development') {
 // ─── Static Files ──────────────────────────────────────────────────────────────
 app.use('/uploads', express.static('uploads'));
 
-// ─── Health Check ─────────────────────────────────────────────────────────────
+// ─── Welcome and Health Check ──────────────────────────────────────────────────
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Welcome to the Portfolio API! Head to /api/health for system status. 🚀',
+  });
+});
+
+app.get('/favicon.ico', (req, res) => res.status(204).end());
+
+app.get('/api', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Portfolio API is online. Refer to /api/health for details. 🚀',
+  });
+});
+
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     success: true,

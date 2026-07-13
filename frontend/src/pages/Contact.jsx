@@ -9,7 +9,7 @@ import { isValidEmail } from '../utils/helpers';
 import { scrollReveal } from '../animations/variants';
 
 const contactInfo = [
-  { icon: Mail, label: 'Email', value: 'varunprasadofficial23@example.com', href: 'mailto:varunprasadofficial23@example.com', color: 'primary' },
+  { icon: Mail, label: 'Email', value: 'varunprasadofficial23@gmail.com', href: 'mailto:varunprasadofficial23@gmail.com', color: 'primary' },
   { icon: Phone, label: 'Phone', value: '+91 9345440269', href: 'tel:+919345440269', color: 'secondary' },
   { icon: MapPin, label: 'Location', value: 'Salem, TamilNadu', href: 'https://maps.google.com/?q=Salem,TamilNadu', color: 'accent' },
 ];
@@ -18,6 +18,27 @@ const socialLinks = [
   { icon: Github, href: 'https://github.com/VarunVP007', label: 'GitHub' },
   { icon: Linkedin, href: 'https://linkedin.com/in/varunprasad-v/', label: 'LinkedIn' },
 ];
+
+const colorStyles = {
+  primary: {
+    bg: 'bg-primary/8',
+    hoverBg: 'group-hover:bg-primary/15',
+    text: 'text-primary',
+    border: 'border-primary/20',
+  },
+  secondary: {
+    bg: 'bg-secondary/8',
+    hoverBg: 'group-hover:bg-secondary/15',
+    text: 'text-secondary',
+    border: 'border-secondary/20',
+  },
+  accent: {
+    bg: 'bg-accent/8',
+    hoverBg: 'group-hover:bg-accent/15',
+    text: 'text-accent',
+    border: 'border-accent/20',
+  },
+};
 
 const INITIAL_FORM = { name: '', email: '', subject: '', message: '' };
 const INITIAL_ERRORS = { name: '', email: '', subject: '', message: '' };
@@ -191,24 +212,27 @@ const Contact = () => {
                 <div className="card p-6">
                   <h3 className="font-display font-semibold text-text mb-5">Contact Information</h3>
                   <div className="space-y-4">
-                    {contactInfo.map(({ icon: Icon, label, value, href, color }) => (
-                      <a
-                        key={label}
-                        href={href}
-                        target={href.startsWith('http') ? '_blank' : undefined}
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-4 group"
-                        aria-label={`${label}: ${value}`}
-                      >
-                        <div className={`w-11 h-11 rounded-xl bg-${color}/8 flex items-center justify-center flex-shrink-0 group-hover:bg-${color}/15 transition-colors border border-${color}/20`}>
-                          <Icon size={18} className={`text-${color}`} />
-                        </div>
-                        <div>
-                          <div className="text-xs text-text-muted">{label}</div>
-                          <div className="text-sm font-medium text-text group-hover:text-primary transition-colors">{value}</div>
-                        </div>
-                      </a>
-                    ))}
+                    {contactInfo.map(({ icon: Icon, label, value, href, color }) => {
+                      const styles = colorStyles[color] || colorStyles.primary;
+                      return (
+                        <a
+                          key={label}
+                          href={href}
+                          target={href.startsWith('http') ? '_blank' : undefined}
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-4 group"
+                          aria-label={`${label}: ${value}`}
+                        >
+                          <div className={`w-11 h-11 rounded-xl ${styles.bg} ${styles.hoverBg} ${styles.border} flex items-center justify-center flex-shrink-0 transition-colors border`}>
+                            <Icon size={18} className={styles.text} />
+                          </div>
+                          <div>
+                            <div className="text-xs text-text-muted">{label}</div>
+                            <div className="text-sm font-medium text-text group-hover:text-primary transition-colors">{value}</div>
+                          </div>
+                        </a>
+                      );
+                    })}
                   </div>
 
                   <div className="mt-6 pt-5 border-t border-border">

@@ -2,7 +2,7 @@
 export const experience = [
   {
     id: 1,
-    role: 'Full Developer Intern',
+    role: 'Full Stack Developer Intern',
     company: 'TechForge',
     type: 'Internship',
     period: 'Jul 2024 – Aug 2024',

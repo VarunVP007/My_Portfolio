@@ -23,8 +23,8 @@ const pageMeta = {
     description: 'Explore Varunprasad V\'s portfolio projects including CraftShield, StudySphere, and more.',
   },
   '/experience': {
-    title: 'Experience & Certifications | Varunprasad V',
-    description: 'Professional experience and certifications of Varunprasad V.',
+    title: 'Experience | Varunprasad V',
+    description: 'Professional experience of Varunprasad V.',
   },
   '/leetcode': {
     title: 'LeetCode & GitHub | Varunprasad V',

@@ -7,14 +7,14 @@ export const personalInfo = {
   tagline: 'Problem Solver | Tech Enthusiast',
   bio: "I'm a Computer Science and Business Systems student who loves turning ideas into real-world products. I enjoy working with modern technologies and continuously exploring new things in the tech world.",
   bio2: "I'm passionate about writing clean code, solving problems and collaborating with amazing people.",
-  email: 'varunprasadofficial23@example.com',
+  email: 'varunprasadofficial23@gmail.com',
   phone: '+91 9345440269',
   location: 'Salem, TamilNadu',
   degree: 'B.Tech Computer Science and Business Systems',
   age: 20,
   cgpa: '8.75',
   githubUsername: 'VarunVP007',
-  leetcodeUsername: 'varunprasad',
+  leetcodeUsername: 'OH6I3R4UyZ',
   linkedinUrl: 'https://linkedin.com/in/varunprasad-v/',
   resumeUrl: '/resume/VarunPrasad_Resume.pdf',
 };
@@ -53,5 +53,5 @@ export const highlights = [
 export const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/VarunVP007', icon: 'Github' },
   { name: 'LinkedIn', href: 'https://linkedin.com/in/varunprasad-v/', icon: 'Linkedin' },
-  { name: 'Email', href: 'mailto:varunprasadofficial23@example.com', icon: 'Mail' },
+  { name: 'Email', href: 'mailto:varunprasadofficial23@gmail.com', icon: 'Mail' },
 ];

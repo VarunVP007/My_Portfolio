@@ -1,4 +1,4 @@
-# 🚀 Personal Portfolio — Varun Prasad V
+# 🚀 Personal Portfolio — Varunprasad V
 
 [![React](https://img.shields.io/badge/React-18.x-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -7,7 +7,7 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-Latest-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-A production-ready, highly responsive, and elegant full-stack personal portfolio website designed for **VarunPrasad V** — Full Stack Developer & Computer Science and Business Systems Student. Built with a modern Warm Earthy SaaS design system, dynamic data visualization, interactive project showcases, and a Node.js + Express backend.
+A production-ready, highly responsive, and elegant full-stack personal portfolio website designed for **Varunprasad V** — Full Stack Developer & Computer Science and Business Systems Student. Built with a modern Warm Earthy SaaS design system, dynamic data visualization, interactive project showcases, and a Node.js + Express backend.
 
 ---
 
@@ -126,10 +126,10 @@ npm run dev
 
 ## 👤 Author
 
-**VarunPrasad V**
+**Varunprasad V**
 - **Degree:** B.Tech Computer Science and Business Systems
 - **Location:** Salem, TamilNadu
-- **Email:** varunprasadofficial23@example.com
+- **Email:** varunprasadofficial23@gmail.com
 - **GitHub:** [@VarunVP007](https://github.com/VarunVP007)
 
 ---

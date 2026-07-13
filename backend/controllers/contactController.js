@@ -1,5 +1,57 @@
 const Contact = require('../models/Contact');
 const { validationResult } = require('express-validator');
+const nodemailer = require('nodemailer');
+
+/**
+ * Helper to send email notification
+ */
+const sendEmailNotification = async (contactData) => {
+  try {
+    const recipient = process.env.RECEIVER_EMAIL || process.env.EMAIL_TO;
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !recipient) {
+      console.warn('⚠️ Nodemailer: Missing environment variables EMAIL_USER, EMAIL_PASS, and recipient (RECEIVER_EMAIL or EMAIL_TO). Skipping email notification.');
+      return;
+    }
+
+    const transporter = nodemailer.createTransport({
+      host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+      port: parseInt(process.env.EMAIL_PORT || '587'),
+      secure: process.env.EMAIL_PORT === '465', // true for 465, false for 587
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false, // Bypasses local SSL certificate issues on Windows
+      },
+    });
+
+    const mailOptions = {
+      from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
+      to: recipient,
+      subject: `📬 New Portfolio Message: ${contactData.subject}`,
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; color: #0f172a;">
+          <h2 style="color: #2563eb; margin-top: 0;">New portfolio message received!</h2>
+          <p><strong>Name:</strong> ${contactData.name}</p>
+          <p><strong>Email:</strong> <a href="mailto:${contactData.email}">${contactData.email}</a></p>
+          <p><strong>Subject:</strong> ${contactData.subject}</p>
+          <p><strong>Message:</strong></p>
+          <blockquote style="background: #f1f5f9; padding: 16px; border-left: 4px solid #2563eb; border-radius: 4px; margin: 16px 0; font-style: italic;">
+            ${contactData.message.replace(/\n/g, '<br/>')}
+          </blockquote>
+          <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 24px 0;" />
+          <p style="font-size: 0.75rem; color: #64748b; margin-bottom: 0;">Submitted on: ${new Date().toLocaleString()}</p>
+        </div>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log('✅ Nodemailer: Email notification sent successfully!');
+  } catch (err) {
+    console.error('❌ Nodemailer Error:', err.message);
+  }
+};
 
 /**
  * @desc    Submit a contact form message
@@ -30,8 +82,13 @@ const submitContact = async (req, res, next) => {
         ipAddress: req.ip || req.connection.remoteAddress,
         userAgent: req.headers['user-agent'],
       });
+      // Send email asynchronously
+      sendEmailNotification({ name, email, subject, message });
     } catch (dbError) {
       console.warn('⚠️ Could not save contact to MongoDB:', dbError.message);
+      // Try sending email as fallback
+      sendEmailNotification({ name, email, subject, message });
+      
       // Fallback response if DB is offline
       return res.status(200).json({
         success: true,

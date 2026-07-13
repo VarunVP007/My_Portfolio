@@ -9,10 +9,12 @@ import { useCounter } from '../hooks/useHooks';
 import { staggerContainer, staggerItem, scrollReveal } from '../animations/variants';
 
 // ─── Animated Counter ─────────────────────────────────────────────────────────
-const CounterStat = ({ stat, isVisible }) => {
-  const count = useCounter(stat.value, 2000, isVisible);
+const CounterStat = ({ stat }) => {
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const count = useCounter(stat.value, 2000, inView);
   return (
     <motion.div
+      ref={ref}
       variants={staggerItem}
       className="glass-card p-6 text-center hover:shadow-soft-lg transition-all duration-300 group hover:-translate-y-1"
     >
@@ -38,7 +40,7 @@ const BackgroundBlobs = () => (
 const socialData = [
   { icon: Github, href: 'https://github.com/VarunVP007', label: 'GitHub' },
   { icon: Linkedin, href: 'https://linkedin.com/in/varunprasad-v/', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:varunprasadofficial23@example.com', label: 'Email' },
+  { icon: Mail, href: 'mailto:varunprasadofficial23@gmail.com', label: 'Email' },
 ];
 
 // ─── Typewriter words ─────────────────────────────────────────────────────────
@@ -238,6 +240,23 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Stats Counter Section ── */}
+      <section className="py-12 bg-white border-y border-border/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: '-50px' }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          >
+            {stats.map((stat) => (
+              <CounterStat key={stat.label} stat={stat} />
+            ))}
+          </motion.div>
         </div>
       </section>
 

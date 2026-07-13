@@ -194,6 +194,54 @@ const Projects = () => {
         <div className="section-container py-0">
           <SectionTitle title="Projects" />
 
+          {/* Filters and Search Bar */}
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
+            {/* Category Pills */}
+            <div className="flex flex-wrap gap-2 w-full md:w-auto justify-start" role="tablist" aria-label="Project categories">
+              {projectCategories.map((cat) => {
+                const isActive = category === cat;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => handleCategoryChange(cat)}
+                    role="tab"
+                    aria-selected={isActive}
+                    className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                      isActive
+                        ? 'bg-primary text-white shadow-primary/20 shadow-md scale-102'
+                        : 'bg-background hover:bg-primary/5 text-text-muted hover:text-primary border border-border/80'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Search Input */}
+            <div className="relative w-full md:w-80">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-text-light">
+                <Search size={18} />
+              </span>
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+                placeholder="Search projects by name, technology..."
+                className="w-full pl-10 pr-10 py-2.5 bg-background border border-border/80 rounded-xl text-sm text-text placeholder:text-text-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                aria-label="Search projects"
+              />
+              {search && (
+                <button
+                  onClick={() => { setSearch(''); setPage(1); }}
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-text-light hover:text-primary transition-colors"
+                  aria-label="Clear search"
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+          </div>
 
           {/* Results info */}
           <div className="text-sm text-text-muted mb-6">

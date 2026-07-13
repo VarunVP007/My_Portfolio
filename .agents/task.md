@@ -1,0 +1,7 @@
+- [x] Fix standalone Education routing in `AppRouter.jsx`
+- [x] Add Project Search & Category Filter UI in `Projects.jsx`
+- [x] Merge LeetCode & GitHub pages with a tab switcher in `LeetCode.jsx` and update `Navbar.jsx`
+- [x] Fix uncompiled dynamic Tailwind color classes in `Contact.jsx`
+- [x] Clean up dead imports/code in `Home.jsx`
+- [x] Configure Nodemailer email alerts in backend `contactController.js`
+- [x] Verify build and run manual test

@@ -56,7 +56,7 @@ const Resume = () => {
                       <div className="text-5xl mb-4">📄</div>
                       <h3 className="font-semibold text-text mb-2">PDF Preview</h3>
                       <p className="text-text-muted text-sm mb-6">
-                        Add your resume PDF to <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">public/resume/Varun_Prasad_Resume.pdf</code>
+                        Add your resume PDF to <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">public/resume/VarunPrasad_Resume.pdf</code>
                       </p>
                       <a href={resumeUrl} download className="btn-primary text-sm">
                         <Download size={15} /> Download Resume
@@ -103,7 +103,7 @@ const Resume = () => {
               <motion.div {...scrollReveal(0.2)}>
                 <a
                   href={resumeUrl}
-                  download="Varun_Prasad_Resume.pdf"
+                  download="VarunPrasad_Resume.pdf"
                   className="btn-accent w-full justify-center"
                 >
                   <Download size={18} />

@@ -3,9 +3,10 @@ export const githubData = {
   username: 'VarunVP007',
   name: 'Varunprasad V',
   bio: 'Full Stack Developer | Problem Solver | Open Source Enthusiast',
-  avatar: 'https://avatars.githubusercontent.com/u/example',
+  avatar: 'https://avatars.githubusercontent.com/u/88934578?v=4',
   location: 'Salem, TamilNadu',
-  blog: 'https://varunprasad.dev',
+  blog: 'https://linkedin.com/in/varunprasad-v/',
+  email: 'varunprasadofficial23@gmail.com',
   public_repos: 25,
   followers: 85,
   following: 40,
@@ -23,6 +24,7 @@ export const githubData = {
       languageColor: '#F7DF1E',
       url: 'https://github.com/VarunVP007/craftshield',
       topics: ['react', 'nodejs', 'mongodb', 'tensorflow'],
+      updatedAt: '2024-05-10',
     },
     {
       id: 2,
@@ -34,6 +36,7 @@ export const githubData = {
       languageColor: '#F7DF1E',
       url: 'https://github.com/VarunVP007/studysphere',
       topics: ['react', 'socketio', 'mongodb'],
+      updatedAt: '2024-04-18',
     },
     {
       id: 3,
@@ -45,6 +48,7 @@ export const githubData = {
       languageColor: '#F7DF1E',
       url: 'https://github.com/VarunVP007/expense-tracker',
       topics: ['react', 'expressjs', 'recharts'],
+      updatedAt: '2024-03-25',
     },
     {
       id: 4,
@@ -56,6 +60,7 @@ export const githubData = {
       languageColor: '#3776AB',
       url: 'https://github.com/VarunVP007/ai-chat',
       topics: ['python', 'fastapi', 'gemini'],
+      updatedAt: '2024-02-12',
     },
   ],
 
@@ -79,18 +84,28 @@ export const githubData = {
   contributionData: generateContributionData(),
 };
 
+// Fallback allRepos is just the pinned list initially
+githubData.allRepos = githubData.pinnedRepos;
+
 function generateContributionData() {
   const data = [];
-  const now = new Date();
-  for (let i = 52 * 7; i >= 0; i--) {
-    const date = new Date(now);
-    date.setDate(date.getDate() - i);
-    const dayOfWeek = date.getDay();
+  const today = new Date();
+  
+  // Go back 365 days and align to starting Sunday
+  const startDate = new Date(today);
+  startDate.setDate(today.getDate() - 365);
+  const startDay = startDate.getDay();
+  startDate.setDate(startDate.getDate() - startDay);
+
+  const tempDate = new Date(startDate);
+  for (let i = 0; i < 371; i++) {
     data.push({
-      date: date.toISOString().split('T')[0],
-      count: Math.random() < 0.55 ? Math.floor(Math.random() * 12) : 0,
-      dayOfWeek,
+      date: new Date(tempDate),
+      month: tempDate.toLocaleString('default', { month: 'short' }),
+      dayOfWeek: tempDate.getDay(),
+      count: Math.random() < 0.3 ? Math.floor(Math.random() * 8) : 0,
     });
+    tempDate.setDate(tempDate.getDate() + 1);
   }
   return data;
 }

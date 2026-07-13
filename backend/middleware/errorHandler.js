@@ -2,6 +2,8 @@
  * Global error handling middleware
  */
 const errorHandler = (err, req, res, next) => {
+  const statusCode = err.statusCode || (res.statusCode === 200 ? 500 : res.statusCode);
+  
   let error = { ...err };
   error.message = err.message;
 
@@ -37,7 +39,7 @@ const errorHandler = (err, req, res, next) => {
     error = { message: 'Token expired', statusCode: 401 };
   }
 
-  res.status(error.statusCode || 500).json({
+  res.status(error.statusCode || statusCode).json({
     success: false,
     message: error.message || 'Internal Server Error',
     ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
@@ -49,7 +51,7 @@ const errorHandler = (err, req, res, next) => {
  */
 const notFound = (req, res, next) => {
   const error = new Error(`Route not found: ${req.originalUrl}`);
-  res.status(404);
+  error.statusCode = 404;
   next(error);
 };
 

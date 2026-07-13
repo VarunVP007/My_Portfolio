@@ -3,7 +3,7 @@ export const education = [
   {
     id: 1,
     degree: 'B.Tech Computer Science and Business Systems',
-    institution: 'Knowledge Insutitue Of Technology',
+    institution: 'Knowledge Institute of Technology',
     period: '2023 - 2027',
     score: 'CGPA: 8.23(Till Now)',
     iconType: 'graduation',

@@ -10,14 +10,14 @@ const Logo = ({ size = 36, className = '' }) => {
 
   return (
     <div
-      className={`relative inline-flex items-center justify-center rounded-xl overflow-hidden shadow-md transition-transform duration-300 group-hover:scale-105 flex-shrink-0 bg-[#0A0E17] ${className}`}
+      className={`relative inline-flex items-center justify-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0 ${className}`}
       style={{ width: size, height: size }}
     >
       {!imgError ? (
         <img
           src="/assets/logo.png"
           alt="Varunprasad V Logo"
-          className="w-full h-full object-cover rounded-xl"
+          className="w-full h-full object-contain"
           onError={() => setImgError(true)}
         />
       ) : (
@@ -28,8 +28,6 @@ const Logo = ({ size = 36, className = '' }) => {
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-full p-0.5"
         >
-          <rect width="100" height="100" rx="22" fill="#0A0E17" />
-          <circle cx="50" cy="50" r="48" fill="#0A0E17" stroke="#1E293B" strokeWidth="2" />
           <defs>
             <linearGradient id="v-blue-grad1" x1="20" y1="20" x2="55" y2="80" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#00A3FF" />

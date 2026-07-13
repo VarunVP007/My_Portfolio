@@ -6,7 +6,7 @@ import Logo from './Logo';
 const socialLinks = [
   { icon: Github, href: 'https://github.com/VarunVP007', label: 'GitHub' },
   { icon: Linkedin, href: 'https://linkedin.com/in/varunprasad-v/', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:varunprasadofficial23@example.com', label: 'Email' },
+  { icon: Mail, href: 'mailto:varunprasadofficial23@gmail.com', label: 'Email' },
 ];
 
 const quickLinks = [
@@ -75,10 +75,10 @@ const Footer = () => {
             </div>
             <p className="text-sm text-text-muted mt-4">
               <a
-                href="mailto:varunprasadofficial23@example.com"
+                href="mailto:varunprasadofficial23@gmail.com"
                 className="hover:text-primary transition-colors"
               >
-                varunprasadofficial23@example.com
+                varunprasadofficial23@gmail.com
               </a>
             </p>
           </div>
