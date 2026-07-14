@@ -172,7 +172,7 @@ const Home = () => {
                   className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white shadow-soft-xl"
                 >
                   <img
-                    src="/assets/hero.jpg"
+                    src="/assets/hero.webp"
                     alt="Varunprasad V - Full Stack Developer"
                     className="w-full h-full object-cover scale-125 origin-center transition-transform duration-300"
                     loading="eager"
@@ -180,8 +180,11 @@ const Home = () => {
                       if (!e.currentTarget.dataset.triedPng) {
                         e.currentTarget.dataset.triedPng = "true";
                         e.currentTarget.src = "/assets/hero.png";
+                      } else if (!e.currentTarget.dataset.triedJpg) {
+                        e.currentTarget.dataset.triedJpg = "true";
+                        e.currentTarget.src = "/assets/hero.jpg";
                       } else {
-                        // Final fallback: a neutral placeholder (no stranger's face)
+                        // Final fallback
                         e.currentTarget.style.display = 'none';
                       }
                     }}
@@ -244,22 +247,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── Stats Counter Section ── */}
-      <section className="py-12 bg-white border-y border-border/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: '-50px' }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6"
-          >
-            {stats.map((stat) => (
-              <CounterStat key={stat.label} stat={stat} />
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* ── Quick About Section ── */}
       <section className="py-20 bg-section-alt">
