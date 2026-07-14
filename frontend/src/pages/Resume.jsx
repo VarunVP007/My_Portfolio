@@ -6,8 +6,6 @@ import SectionTitle from '../components/SectionTitle';
 import { scrollReveal } from '../animations/variants';
 
 const Resume = () => {
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
   const [pdfError, setPdfError] = useState(false);
 
   const handlePrint = () => window.print();

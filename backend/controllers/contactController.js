@@ -3,13 +3,24 @@ const { validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
 
 /**
+ * Escapes HTML special characters to prevent XSS via email template injection.
+ */
+const escapeHtml = (str) =>
+  String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+/**
  * Helper to send email notification
  */
 const sendEmailNotification = async (contactData) => {
   try {
-    const recipient = process.env.RECEIVER_EMAIL || process.env.EMAIL_TO;
+    const recipient = process.env.EMAIL_TO;
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !recipient) {
-      console.warn('⚠️ Nodemailer: Missing environment variables EMAIL_USER, EMAIL_PASS, and recipient (RECEIVER_EMAIL or EMAIL_TO). Skipping email notification.');
+      console.warn('⚠️ Nodemailer: Missing environment variables EMAIL_USER, EMAIL_PASS, or EMAIL_TO. Skipping email notification.');
       return;
     }
 
@@ -22,23 +33,30 @@ const sendEmailNotification = async (contactData) => {
         pass: process.env.EMAIL_PASS,
       },
       tls: {
-        rejectUnauthorized: false, // Bypasses local SSL certificate issues on Windows
+        // Only bypass TLS cert validation in development (e.g. Windows self-signed certs)
+        rejectUnauthorized: process.env.NODE_ENV !== 'development',
       },
     });
+
+    // Sanitize all user-supplied fields before embedding in HTML (XSS prevention)
+    const safeName    = escapeHtml(contactData.name);
+    const safeEmail   = escapeHtml(contactData.email);
+    const safeSubject = escapeHtml(contactData.subject);
+    const safeMessage = escapeHtml(contactData.message).replace(/\n/g, '<br/>');
 
     const mailOptions = {
       from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
       to: recipient,
-      subject: `📬 New Portfolio Message: ${contactData.subject}`,
+      subject: `📬 New Portfolio Message: ${safeSubject}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; color: #0f172a;">
           <h2 style="color: #2563eb; margin-top: 0;">New portfolio message received!</h2>
-          <p><strong>Name:</strong> ${contactData.name}</p>
-          <p><strong>Email:</strong> <a href="mailto:${contactData.email}">${contactData.email}</a></p>
-          <p><strong>Subject:</strong> ${contactData.subject}</p>
+          <p><strong>Name:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
+          <p><strong>Subject:</strong> ${safeSubject}</p>
           <p><strong>Message:</strong></p>
           <blockquote style="background: #f1f5f9; padding: 16px; border-left: 4px solid #2563eb; border-radius: 4px; margin: 16px 0; font-style: italic;">
-            ${contactData.message.replace(/\n/g, '<br/>')}
+            ${safeMessage}
           </blockquote>
           <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 24px 0;" />
           <p style="font-size: 0.75rem; color: #64748b; margin-bottom: 0;">Submitted on: ${new Date().toLocaleString()}</p>

@@ -16,6 +16,16 @@ const app = express();
 // ─── Security Middleware ───────────────────────────────────────────────────────
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' },
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc:  ["'self'"],
+      styleSrc:   ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+      fontSrc:    ["'self'", 'https://fonts.gstatic.com'],
+      imgSrc:     ["'self'", 'data:', 'https://images.unsplash.com', 'https://avatars.githubusercontent.com'],
+      connectSrc: ["'self'", process.env.CLIENT_URL || 'http://localhost:5173'],
+    },
+  },
 }));
 
 // ─── CORS ─────────────────────────────────────────────────────────────────────
@@ -23,7 +33,7 @@ const corsOptions = {
   origin: process.env.CLIENT_URL || 'http://localhost:5173',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Admin-Secret'],
 };
 app.use(cors(corsOptions));
 
@@ -62,7 +72,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // ─── Static Files ──────────────────────────────────────────────────────────────
-app.use('/uploads', express.static('uploads'));
+// NOTE: /uploads static route removed — no file upload feature exists.
+// If uploads are added in the future, re-add this route with proper auth.
 
 // ─── Welcome and Health Check ──────────────────────────────────────────────────
 app.get('/', (req, res) => {

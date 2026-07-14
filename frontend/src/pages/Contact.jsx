@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
 import PageTransition from '../components/PageTransition';
 import SectionTitle from '../components/SectionTitle';
@@ -123,6 +123,7 @@ const Contact = () => {
                           value={form.name}
                           onChange={handleChange}
                           placeholder="Your Name"
+                          maxLength={100}
                           className={`form-input ${errors.name ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20' : ''}`}
                           aria-invalid={!!errors.name}
                           aria-describedby={errors.name ? 'name-error' : undefined}
@@ -138,6 +139,7 @@ const Contact = () => {
                           value={form.email}
                           onChange={handleChange}
                           placeholder="your@email.com"
+                          maxLength={254}
                           className={`form-input ${errors.email ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20' : ''}`}
                           aria-invalid={!!errors.email}
                           aria-describedby={errors.email ? 'email-error' : undefined}
@@ -155,6 +157,7 @@ const Contact = () => {
                         value={form.subject}
                         onChange={handleChange}
                         placeholder="Project Collaboration"
+                        maxLength={200}
                         className={`form-input ${errors.subject ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20' : ''}`}
                         aria-invalid={!!errors.subject}
                         aria-describedby={errors.subject ? 'subject-error' : undefined}
@@ -171,6 +174,7 @@ const Contact = () => {
                         value={form.message}
                         onChange={handleChange}
                         placeholder="Tell me about your project..."
+                        maxLength={2000}
                         className={`form-input resize-none ${errors.message ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20' : ''}`}
                         aria-invalid={!!errors.message}
                         aria-describedby={errors.message ? 'message-error' : undefined}
@@ -184,6 +188,8 @@ const Contact = () => {
                     <motion.button
                       type="submit"
                       disabled={loading}
+                      aria-busy={loading}
+                      aria-label={loading ? 'Sending message, please wait…' : 'Send message'}
                       whileHover={{ scale: loading ? 1 : 1.01 }}
                       whileTap={{ scale: loading ? 1 : 0.98 }}
                       className="btn-primary w-full justify-center py-3.5 disabled:opacity-60"

@@ -1,6 +1,7 @@
 const express = require('express');
 const { body } = require('express-validator');
 const { submitContact, getContacts, updateContactStatus } = require('../controllers/contactController');
+const adminAuth = require('../middleware/adminAuth');
 
 const router = express.Router();
 
@@ -25,9 +26,11 @@ const contactValidation = [
     .isLength({ min: 10, max: 2000 }).withMessage('Message must be between 10 and 2000 characters'),
 ];
 
-// Routes
+// Public route — anyone can submit a contact form
 router.post('/', contactValidation, submitContact);
-router.get('/', getContacts);
-router.patch('/:id', updateContactStatus);
+
+// Admin-only routes — require X-Admin-Secret header
+router.get('/', adminAuth, getContacts);
+router.patch('/:id', adminAuth, updateContactStatus);
 
 module.exports = router;

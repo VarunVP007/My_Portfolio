@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block common attack paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /.env
+
+# Sitemap
+Sitemap: https://portfolio-varunprasadv.netlify.app/sitemap.xml

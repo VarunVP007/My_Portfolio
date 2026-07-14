@@ -11,7 +11,7 @@ const navItems = [
   { label: 'Skills', path: '/skills' },
   { label: 'Projects', path: '/projects' },
   { label: 'Experience', path: '/experience' },
-  { label: 'Profiles', path: '/leetcode' },
+  { label: 'LeetCode & GitHub', path: '/leetcode' },
   { label: 'Contact', path: '/contact' },
 ];
 

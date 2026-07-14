@@ -1,4 +1,4 @@
-import { useState, useMemo, memo } from 'react';
+import { useState, useMemo, memo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Search, X, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
@@ -86,8 +86,27 @@ const ProjectCard = memo(({ project, onOpen }) => (
   </motion.article>
 ));
 
-// ─── Project Modal ─────────────────────────────────────────────────────────────
+// ─── Project Modal ────────────────────────────────────────────────────────────────
 const ProjectModal = ({ project, onClose }) => {
+  const closeBtnRef = useRef(null);
+
+  // Escape key closes modal
+  useEffect(() => {
+    if (!project) return;
+    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [project, onClose]);
+
+  // Move focus into modal when it opens
+  useEffect(() => {
+    if (project) {
+      // Small delay to allow AnimatePresence to mount the modal first
+      const t = setTimeout(() => closeBtnRef.current?.focus(), 50);
+      return () => clearTimeout(t);
+    }
+  }, [project]);
+
   if (!project) return null;
   return (
     <AnimatePresence>
@@ -99,7 +118,7 @@ const ProjectModal = ({ project, onClose }) => {
         onClick={onClose}
         role="dialog"
         aria-modal="true"
-        aria-label={project.title}
+        aria-labelledby="modal-project-title"
       >
         <motion.div
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -109,10 +128,12 @@ const ProjectModal = ({ project, onClose }) => {
           className="bg-white rounded-3xl shadow-soft-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="relative h-56 overflow-hidden rounded-t-3xl">
+          <div className="relative h-40 sm:h-56 overflow-hidden rounded-t-3xl">
             <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <button
+              ref={closeBtnRef}
+              id="modal-close-btn"
               onClick={onClose}
               className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 transition-colors"
               aria-label="Close modal"
@@ -120,7 +141,7 @@ const ProjectModal = ({ project, onClose }) => {
               <X size={16} />
             </button>
             <div className="absolute bottom-4 left-5">
-              <h2 className="text-2xl font-display font-bold text-white">{project.title}</h2>
+              <h2 id="modal-project-title" className="text-2xl font-display font-bold text-white">{project.title}</h2>
             </div>
           </div>
 

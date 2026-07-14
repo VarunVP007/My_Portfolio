@@ -181,7 +181,8 @@ const Home = () => {
                         e.currentTarget.dataset.triedPng = "true";
                         e.currentTarget.src = "/assets/hero.png";
                       } else {
-                        e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&crop=face";
+                        // Final fallback: a neutral placeholder (no stranger's face)
+                        e.currentTarget.style.display = 'none';
                       }
                     }}
                   />
@@ -189,12 +190,12 @@ const Home = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
                 </motion.div>
 
-                {/* Floating cards */}
+                {/* Floating cards — hidden on very small screens to avoid overflow */}
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 }}
-                  className="absolute -right-4 top-10 glass-card px-4 py-3 shadow-soft-lg"
+                  className="absolute -right-4 top-10 glass-card px-4 py-3 shadow-soft-lg hidden sm:block"
                   style={{ animation: 'float 4s ease-in-out infinite' }}
                 >
                   <div className="flex items-center gap-2">
@@ -212,7 +213,7 @@ const Home = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 1 }}
-                  className="absolute -left-4 bottom-16 glass-card px-4 py-2.5 shadow-soft-lg"
+                  className="absolute -left-4 bottom-16 glass-card px-4 py-2.5 shadow-soft-lg hidden sm:block"
                   style={{ animation: 'float 5s ease-in-out infinite 1s' }}
                 >
                   <div className="flex items-center gap-1.5">
@@ -301,7 +302,7 @@ const Home = () => {
                   whileHover={{ scale: 1.02 }}
                   className={`p-5 rounded-2xl border bg-gradient-to-br ${item.color} transition-all`}
                 >
-                  <div className="text-3xl mb-2">{item.icon}</div>
+                  <div className="text-3xl mb-2" aria-hidden="true">{item.icon}</div>
                   <div className="font-semibold text-text text-sm mb-1">{item.label}</div>
                   <div className="text-text-muted text-xs">{item.desc}</div>
                 </motion.div>
